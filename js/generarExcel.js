@@ -35,6 +35,7 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
     var datosTabla = document.querySelectorAll('#' + tabla + ' tbody tr');
     var tituloTabla = '';
     var contenido = '';
+    var cantidadColumnas = 0;
 
     if((datosTabla.length + datosTituloTabla.length) > 0)
     {
@@ -42,18 +43,20 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
 
         for(var i = 0;i < datosTituloTabla.length;i++)
         {
-            var fila = datosTabla[i];
+            var fila = datosTituloTabla[i];
+
+            cantidadColumnas = (cantidadColumnas < fila.children.length)?fila.children.length:cantidadColumnas;
 
             for(var j = 0;j < fila.children.length;j++)
             {
                 if(tituloTabla === '' || coma)
                 {
-                    tituloTabla += fila.children[j].textContent + '*' + fila.children[j].rowSpan + '-' + fila.children[j].colSpan;
+                    tituloTabla += (fila.children[j].textContent).trim() + '*' + fila.children[j].rowSpan + '-' + fila.children[j].colSpan;
                     coma = false;
                 }
                 else
                 {
-                    tituloTabla += '+' + fila.children[j].textContent + '*' + fila.children[j].rowSpan + '-' + fila.children[j].colSpan;
+                    tituloTabla += '+' + (fila.children[j].textContent).trim() + '*' + fila.children[j].rowSpan + '-' + fila.children[j].colSpan;
                 }
             }
 
@@ -63,8 +66,6 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
                 coma = true;
             }
         }
-
-        console.log('fin1');
 
         coma = false;
 
@@ -76,12 +77,12 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
             {
                 if(contenido === '' || coma)
                 {
-                    contenido += nulo(fila.children[j].textContent);
+                    contenido += nulo((fila.children[j].textContent).trim());
                     coma = false;
                 }
                 else
                 {
-                    contenido += '+' + fila.children[j].textContent;
+                    contenido += '+' + (fila.children[j].textContent).trim();
                 }
             }
 
@@ -91,8 +92,6 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
                 coma = true;
             }
         }
-
-        console.log('fin2');
 
         var html = '<form action="" method="post" id="formulario-generar-excel">'
         			+ '<input type="text" hidden name="formulario-generar-excel-descripcion" id="formulario-generar-excel-descripcion">'
@@ -109,7 +108,7 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
         document.getElementById('formulario-generar-excel').action = '../php/generarExcel.php';
         document.getElementById('formulario-generar-excel-descripcion').value = descripcion;
         document.getElementById('formulario-generar-excel-hoja').value = hoja;
-        document.getElementById('formulario-generar-excel-titulo').value = titulo+'*4';
+        document.getElementById('formulario-generar-excel-titulo').value = titulo + '*' + cantidadColumnas;
         document.getElementById('formulario-generar-excel-tituloTabla').value = tituloTabla;
         document.getElementById('formulario-generar-excel-contenido').value = contenido;
         document.getElementById('formulario-generar-excel-nombre').value = nombre;

@@ -36,4 +36,18 @@
 	padding: 8px 0;
 }
 
+.boton-descargar
+{
+	border-radius: 0.3em;
+    border: 1px solid #4CAF50;
+    background: #f2f2f2;
+    cursor: pointer;
+}
+
+.boton-descargar:hover
+{
+	background: #e2dede;
+	box-shadow: 0 0 3px 0px #108a10;
+}
+
 

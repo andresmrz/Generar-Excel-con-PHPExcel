@@ -168,7 +168,7 @@
 
 	<center>
 		<br><br><br>
-		<button onclick="tablaToExcel('tabla','Tabla de goleadores mundial Rusia 2018','Goleadores','TABLA DE GOLEADORES','estadisticasRusia2018','Mi Nombre');">DECARGAR EXCEL</button>
+		<button title="Descargar Excel" class="boton-descargar" onclick="tablaToExcel('tabla','Tabla de goleadores mundial Rusia 2018','Goleadores','TABLA DE GOLEADORES','estadisticasRusia2018','Mi Nombre');"><img src="../img/excel.png"></button>
 	</center>
 
 </body>
