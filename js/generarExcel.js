@@ -15,7 +15,7 @@
 
 //// funcion auxiliar
 
-function nulo(texto)
+function nulo(texto)  // funcion que evita errores en la tabla
 {
     if(texto === '')
     {
@@ -27,7 +27,19 @@ function nulo(texto)
     }
 }
 
-///
+/// funcion que permite obtener un archivo xslx (EXCEL) a partir de una tabla en html
+
+/**
+** tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
+
+* tabla: id de la tabla en html
+* descripcion: descripcion del contenido de la tabla
+* hoja: nombre que tendra hoja/sheet en el archivo xslx (EXCEL)
+* titulo: titulo que tendra la tabla, en caso de ser necesario
+* nombre: nombre del archivo
+* autor: quien genera el archivo (esta informacion se utiliza para llenar el campo autor del archivo)
+* 
+*/
 
 function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
 {

@@ -39,22 +39,22 @@
 	$datos = explode('*',$titulo);
 	$cantColumn = intval($datos[1]);
 
-	// for($i = 0;$i < $cantColumn;$i++)
-	// {
-	// 	$objeto->setActiveSheetIndex(0)->getColumnDimension($columnas[$i])->setAutoSize(true);
-	// }
+	if(trim($datos[0]) != '')
+	{
+		$objeto->getActiveSheet()->calculateColumnWidths();
 
-	$objeto->getActiveSheet()->calculateColumnWidths();
+		$objeto->getActiveSheet()->setCellValue($columnas[$columna].$fila,$datos[0]);
+		$objeto->getActiveSheet()->getStyle($columnas[$columna].$fila)->applyFromArray($styleArray);
+		$objeto->getActiveSheet()->mergeCells($columnas[$columna].$fila.':'.$columnas[$columna + intval($datos[1]) - 1].$fila);
+		$objeto->getActiveSheet()->getStyle($columnas[$columna].$fila.':'.$columnas[$columna + intval($datos[1]) - 1].$fila)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+		$objeto->getActiveSheet()->getStyle($columnas[$columna].$fila.':'.$columnas[$columna + intval($datos[1]) - 1].$fila)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setRGB('19A7E4');
+		$objeto->getActiveSheet()->getStyle('A1')->getFont()->setSize(28);
+		$objeto->getActiveSheet()->getRowDimension('1')->setRowHeight(32);
 
-	$objeto->getActiveSheet()->setCellValue($columnas[$columna].$fila,$datos[0]);
-	$objeto->getActiveSheet()->getStyle($columnas[$columna].$fila)->applyFromArray($styleArray);
-	$objeto->getActiveSheet()->mergeCells($columnas[$columna].$fila.':'.$columnas[$columna + intval($datos[1]) - 1].$fila);
-	$objeto->getActiveSheet()->getStyle($columnas[$columna].$fila.':'.$columnas[$columna + intval($datos[1]) - 1].$fila)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-	$objeto->getActiveSheet()->getStyle($columnas[$columna].$fila.':'.$columnas[$columna + intval($datos[1]) - 1].$fila)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setRGB('19A7E4');
-	$objeto->getActiveSheet()->getStyle('A1')->getFont()->setSize(28);
-	$objeto->getActiveSheet()->getRowDimension('1')->setRowHeight(32);
+		$fila++;
+	}
 
-	$fila++;
+
 	$datos = explode(';',$tituloTabla);
 
 	for($i = 0;$i < sizeof($datos);$i++)
