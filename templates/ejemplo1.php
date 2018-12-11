@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=1.0, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
 	<title>TableToExcel</title>
 	<link rel="icon" href="../img/favicon.png">
+	<meta name="author" content="Mao">
 
 	<!-- scripts online -->
 
