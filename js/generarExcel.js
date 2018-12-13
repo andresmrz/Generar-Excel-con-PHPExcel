@@ -105,7 +105,7 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
             }
         }
 
-        var html = '<form action="" method="post" id="formulario-generar-excel">'
+        var html = '<form action="" method="post" id="formulario-generar-excel" style="display: none;">'
         			+ '<input type="text" hidden name="formulario-generar-excel-descripcion" id="formulario-generar-excel-descripcion">'
         			+ '<input type="text" hidden name="formulario-generar-excel-hoja" id="formulario-generar-excel-hoja">'
         			+ '<input type="text" hidden name="formulario-generar-excel-titulo" id="formulario-generar-excel-titulo">'
@@ -117,7 +117,7 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
 
     	document.body.innerHTML += html;
 
-        document.getElementById('formulario-generar-excel').action = '../php/generarExcel.php';
+        document.getElementById('formulario-generar-excel').action = '../php/generarExcel.php'; /// edita la ruta varia segun arquitectura de la aplicacion
         document.getElementById('formulario-generar-excel-descripcion').value = descripcion;
         document.getElementById('formulario-generar-excel-hoja').value = hoja;
         document.getElementById('formulario-generar-excel-titulo').value = titulo + '*' + cantidadColumnas;
