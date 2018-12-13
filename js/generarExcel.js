@@ -105,7 +105,7 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
             }
         }
 
-        var html = '<form action="" method="post" id="formulario-generar-excel" style="display: none;">'
+        var html = '<form action="" method="post" id="formulario-generar-excel" style="display: none;z-index: -99;">'
         			+ '<input type="text" hidden name="formulario-generar-excel-descripcion" id="formulario-generar-excel-descripcion">'
         			+ '<input type="text" hidden name="formulario-generar-excel-hoja" id="formulario-generar-excel-hoja">'
         			+ '<input type="text" hidden name="formulario-generar-excel-titulo" id="formulario-generar-excel-titulo">'
