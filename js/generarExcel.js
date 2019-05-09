@@ -30,7 +30,7 @@ function nulo(texto)  // funcion que evita errores en la tabla
 /// funcion que permite obtener un archivo xslx (EXCEL) a partir de una tabla en html
 
 /**
-** tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
+** tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor,ruta)
 
 * tabla: id de la tabla en html
 * descripcion: descripcion del contenido de la tabla
@@ -38,6 +38,7 @@ function nulo(texto)  // funcion que evita errores en la tabla
 * titulo: titulo que tendra la tabla, en caso de ser necesario
 * nombre: nombre del archivo
 * autor: quien genera el archivo (esta informacion se utiliza para llenar el campo autor del archivo)
+* ruta: ubicacion del archivo generarExcel.php
 * 
 */
 
