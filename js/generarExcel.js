@@ -41,7 +41,7 @@ function nulo(texto)  // funcion que evita errores en la tabla
 * 
 */
 
-function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
+function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor,ruta)
 {
     var datosTituloTabla = document.querySelectorAll('#' + tabla + ' thead tr');
     var datosTabla = document.querySelectorAll('#' + tabla + ' tbody tr');
@@ -106,18 +106,21 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor)
         }
 
         var html = '<form action="" method="post" id="formulario-generar-excel" style="display: none;z-index: -99;">'
-        			+ '<input type="text" hidden name="formulario-generar-excel-descripcion" id="formulario-generar-excel-descripcion">'
-        			+ '<input type="text" hidden name="formulario-generar-excel-hoja" id="formulario-generar-excel-hoja">'
-        			+ '<input type="text" hidden name="formulario-generar-excel-titulo" id="formulario-generar-excel-titulo">'
-        			+ '<input type="text" hidden name="formulario-generar-excel-tituloTabla" id="formulario-generar-excel-tituloTabla">'
-        			+ '<input type="text" hidden name="formulario-generar-excel-contenido" id="formulario-generar-excel-contenido">'
-        			+ '<input type="text" hidden name="formulario-generar-excel-nombre" id="formulario-generar-excel-nombre">'
-        			+ '<input type="text" hidden name="formulario-generar-excel-autor" id="formulario-generar-excel-autor" value="">'
-    			+ '</form>';
+                    + '<input type="text" hidden name="formulario-generar-excel-descripcion" id="formulario-generar-excel-descripcion">'
+                    + '<input type="text" hidden name="formulario-generar-excel-hoja" id="formulario-generar-excel-hoja">'
+                    + '<input type="text" hidden name="formulario-generar-excel-titulo" id="formulario-generar-excel-titulo">'
+                    + '<input type="text" hidden name="formulario-generar-excel-tituloTabla" id="formulario-generar-excel-tituloTabla">'
+                    + '<input type="text" hidden name="formulario-generar-excel-contenido" id="formulario-generar-excel-contenido">'
+                    + '<input type="text" hidden name="formulario-generar-excel-nombre" id="formulario-generar-excel-nombre">'
+                    + '<input type="text" hidden name="formulario-generar-excel-autor" id="formulario-generar-excel-autor" value="">'
+                + '</form>';
 
-    	document.body.innerHTML += html;
+        var div = document.createElement("div");
+        div.innerHTML = html;
 
-        document.getElementById('formulario-generar-excel').action = '../php/generarExcel.php'; /// edita la ruta varia segun arquitectura de la aplicacion
+        document.body.appendChild(div);
+
+        document.getElementById('formulario-generar-excel').action = ruta; /// edita la ruta varia segun arquitectura de la aplicacion
         document.getElementById('formulario-generar-excel-descripcion').value = descripcion;
         document.getElementById('formulario-generar-excel-hoja').value = hoja;
         document.getElementById('formulario-generar-excel-titulo').value = titulo + '*' + cantidadColumnas;

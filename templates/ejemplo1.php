@@ -169,7 +169,23 @@
 
 	<center>
 		<br><br><br>
-		<button title="Descargar Excel" class="boton-descargar" onclick="tablaToExcel('tabla','Tabla de goleadores mundial Rusia 2018','Goleadores','TABLA DE GOLEADORES','estadisticasRusia2018','Mi Nombre');"><img src="../img/excel.png"></button>
+
+		<!-- funcion que permite obtener un archivo xslx (EXCEL) a partir de una tabla en html
+
+		/**
+		** tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor,ruta)
+
+		* tabla: id de la tabla en html
+		* descripcion: descripcion del contenido de la tabla
+		* hoja: nombre que tendra hoja/sheet en el archivo xslx (EXCEL)
+		* titulo: titulo que tendra la tabla, en caso de ser necesario
+		* nombre: nombre del archivo
+		* autor: quien genera el archivo (esta informacion se utiliza para llenar el campo autor del archivo)
+		* ruta: ubicacion del archivo generarExcel.php
+		* 
+		*/-->
+
+		<button title="Descargar Excel" class="boton-descargar" onclick="tablaToExcel('tabla','Tabla de goleadores mundial Rusia 2018','Goleadores','TABLA DE GOLEADORES','estadisticasRusia2018','Mi Nombre','../php/generarExcel.php');"><img src="../img/excel.png"></button>
 	</center>
 
 </body>
