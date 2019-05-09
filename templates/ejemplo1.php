@@ -16,12 +16,6 @@
 	<link rel="stylesheet" type="text/css" href="../css/generarExcel.css">
 	<script type="text/javascript" src="../js/generarExcel.js"></script>
 
-	<style type="text/css">
-		.text-center {
-    text-align: center!important;
-}
-	</style>
-
 </head>
 <body style="background: url('../img/fondo.png');">
 		
@@ -177,7 +171,7 @@
 						TOTAL
 					</center>
 				</td>
-				<td onclick="console.log(this.style.textAlign)" class="text-center">26</td>
+				<td class="text-center">26</td>
 			</tr>
 		</tbody>
 	</table>
