@@ -36,7 +36,7 @@
 
 	$objeto->getActiveSheet()->getColumnDimension('O')->setWidth(25);
 
-	$datos = explode('*',$titulo);
+	$datos = explode('**',$titulo);
 	$cantColumn = intval($datos[1]);
 
 	if(trim($datos[0]) != '')
@@ -55,15 +55,15 @@
 	}
 
 
-	$datos = explode(';',$tituloTabla);
+	$datos = explode(';;',$tituloTabla);
 
 	for($i = 0;$i < sizeof($datos);$i++)
 	{
-		$filas = explode('+',$datos[$i]);
+		$filas = explode('++',$datos[$i]);
 
 		for($j = 0;$j < sizeof($filas);$j++)
 		{
-			$datofila2 = explode('*',$filas[$j]);
+			$datofila2 = explode('**',$filas[$j]);
 			$datofila = explode('-',$datofila2[1]);
 			$objeto->getActiveSheet()->setCellValue($columnas[$columna].$fila,$datofila2[0]);
 			$objeto->getActiveSheet()->mergeCells($columnas[$columna].$fila.':'.$columnas[$columna + intval($datofila[1]) - 1].($fila + intval($datofila[0]) - 1));
@@ -89,21 +89,23 @@
 	}
 
 
-	$datos = explode(';',$contenido);
+	$datos = explode(';;',$contenido);
 
 	for($i = 0;$i < sizeof($datos);$i++)
 	{
-		$filas = explode('+',$datos[$i]);
+		$filas = explode('++',$datos[$i]);
 
 		for($j = 0;$j < sizeof($filas);$j++)
 		{
-			$objeto->getActiveSheet()->setCellValue($columnas[$columna].$fila,$filas[$j]);
+			$datofila = explode('**',$filas[$j]);
+			$objeto->getActiveSheet()->setCellValue($columnas[$columna].$fila,$datofila[0]);
+			$objeto->getActiveSheet()->mergeCells($columnas[$columna].$fila.':'.$columnas[$columna + intval($datofila[1]) - 1].$fila);
 
-			$objeto->getActiveSheet()->getStyle($columnas[$columna].$fila)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			$objeto->getActiveSheet()->getStyle($columnas[$columna].$fila.':'.$columnas[$columna + intval($datofila[1]) - 1].$fila)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
-			$objeto->getActiveSheet()->getStyle($columnas[$columna].$fila)->applyFromArray($styleArray);
+			$objeto->getActiveSheet()->getStyle($columnas[$columna].$fila.':'.$columnas[$columna + intval($datofila[1]) - 1].$fila)->applyFromArray($styleArray);
 
-			$columna++;
+			$columna += intval($datofila[1]);
 		}
 		$fila++;
 		$columna = 0;

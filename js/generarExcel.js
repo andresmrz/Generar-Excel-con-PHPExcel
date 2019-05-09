@@ -63,18 +63,18 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor,ruta)
             {
                 if(tituloTabla === '' || coma)
                 {
-                    tituloTabla += (fila.children[j].textContent).trim() + '*' + fila.children[j].rowSpan + '-' + fila.children[j].colSpan;
+                    tituloTabla += (fila.children[j].textContent).trim() + '**' + fila.children[j].rowSpan + '-' + fila.children[j].colSpan;
                     coma = false;
                 }
                 else
                 {
-                    tituloTabla += '+' + (fila.children[j].textContent).trim() + '*' + fila.children[j].rowSpan + '-' + fila.children[j].colSpan;
+                    tituloTabla += '++' + (fila.children[j].textContent).trim() + '**' + fila.children[j].rowSpan + '-' + fila.children[j].colSpan;
                 }
             }
 
             if(i < (datosTituloTabla.length - 1))
             {
-                tituloTabla += ';';
+                tituloTabla += ';;';
                 coma = true;
             }
         }
@@ -89,18 +89,18 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor,ruta)
             {
                 if(contenido === '' || coma)
                 {
-                    contenido += nulo((fila.children[j].textContent).trim());
+                    contenido += nulo((fila.children[j].textContent).trim()) + '**' + fila.children[j].colSpan;
                     coma = false;
                 }
                 else
                 {
-                    contenido += '+' + (fila.children[j].textContent).trim();
+                    contenido += '++' + (fila.children[j].textContent).trim() + '**' + fila.children[j].colSpan;
                 }
             }
 
             if(i < (datosTabla.length - 1))
             {
-                contenido += ';';
+                contenido += ';;';
                 coma = true;
             }
         }
@@ -123,9 +123,9 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor,ruta)
         document.getElementById('formulario-generar-excel').action = ruta; /// edita la ruta varia segun arquitectura de la aplicacion
         document.getElementById('formulario-generar-excel-descripcion').value = descripcion;
         document.getElementById('formulario-generar-excel-hoja').value = hoja;
-        document.getElementById('formulario-generar-excel-titulo').value = titulo + '*' + cantidadColumnas;
-        document.getElementById('formulario-generar-excel-tituloTabla').value = tituloTabla;
-        document.getElementById('formulario-generar-excel-contenido').value = contenido;
+        document.getElementById('formulario-generar-excel-titulo').value = titulo + '**' + cantidadColumnas;console.log(titulo + '*' + cantidadColumnas);
+        document.getElementById('formulario-generar-excel-tituloTabla').value = tituloTabla;console.log(tituloTabla)
+        document.getElementById('formulario-generar-excel-contenido').value = contenido;console.log(contenido);
         document.getElementById('formulario-generar-excel-nombre').value = nombre;
         document.getElementById('formulario-generar-excel-autor').value = autor;
 
