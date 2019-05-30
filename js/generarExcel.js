@@ -50,7 +50,7 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor,ruta)
     var contenido = '';
     var cantidadColumnas = 0;
 
-    if((datosTabla.length + datosTituloTabla.length) > 0)
+    if(datosTabla.length > 0)
     {
         var coma = false;
 
@@ -135,7 +135,7 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor,ruta)
     }
     else
     {
-        alert('No hay datos para exportar');
+        alert('No hay datos para exportar.');
     }
 }
 
