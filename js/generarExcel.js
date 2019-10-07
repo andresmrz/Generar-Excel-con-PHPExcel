@@ -116,17 +116,21 @@ function tablaToExcel(tabla,descripcion,hoja,titulo,nombre,autor,ruta)
                     + '<input type="text" hidden name="formulario-generar-excel-autor" id="formulario-generar-excel-autor" value="">'
                 + '</form>';
 
-        var div = document.createElement("div");
-        div.innerHTML = html;
+        if(!document.getElementById('contenedor-formulario-generar-excel'))
+        {
+            var div = document.createElement("div");
+            div.id = 'contenedor-formulario-generar-excel';
+            div.innerHTML = html;
 
-        document.body.appendChild(div);
+            document.body.appendChild(div);
+        }
 
         document.getElementById('formulario-generar-excel').action = ruta; /// edita la ruta varia segun arquitectura de la aplicacion
         document.getElementById('formulario-generar-excel-descripcion').value = descripcion;
         document.getElementById('formulario-generar-excel-hoja').value = hoja;
-        document.getElementById('formulario-generar-excel-titulo').value = titulo + '**' + cantidadColumnas;console.log(titulo + '*' + cantidadColumnas);
-        document.getElementById('formulario-generar-excel-tituloTabla').value = tituloTabla;console.log(tituloTabla)
-        document.getElementById('formulario-generar-excel-contenido').value = contenido;console.log(contenido);
+        document.getElementById('formulario-generar-excel-titulo').value = titulo + '**' + cantidadColumnas;
+        document.getElementById('formulario-generar-excel-tituloTabla').value = tituloTabla;
+        document.getElementById('formulario-generar-excel-contenido').value = contenido;
         document.getElementById('formulario-generar-excel-nombre').value = nombre;
         document.getElementById('formulario-generar-excel-autor').value = autor;
 
